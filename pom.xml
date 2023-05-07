@@ -40,6 +40,18 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
+		<!--Adds support for Actuator, for monitoring the application-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!--Using spring security to secure actuator endpoints-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
