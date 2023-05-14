@@ -14,6 +14,8 @@ public class DemoController {
     //define a private field for the dependency
     private Coach myCoach;
 
+    private Coach anotherCoach;
+
     /**
      * define the constructor for dependency injection (constructor injection)
      * - @Autowired annotation is optional when we have 1 constructor
@@ -23,13 +25,21 @@ public class DemoController {
      *  - DemoController demoController = new DemoController(theCoach);
      */
     @Autowired
-    public DemoController(@Qualifier("baseBallCoach") Coach myCoach) {
+    public DemoController(@Qualifier("rugbyCoach") Coach myCoach,
+                          @Qualifier("rugbyCoach") Coach anotherCoach) {
         this.myCoach = myCoach;
+        this.anotherCoach = anotherCoach;
     }
 
     //daily workout endpoint
     @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
+    }
+
+    //check the beans scopes
+    @GetMapping("/check")
+    public String check(){
+        return "Comparing beans: myCoach == anotherCoach " + (myCoach == anotherCoach); //Singleton:true & Prototype:false
     }
 }
