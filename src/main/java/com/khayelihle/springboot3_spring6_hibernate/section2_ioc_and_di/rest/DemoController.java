@@ -8,9 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    //define a private field for the dependency
+    /**
+     * Field injection...no longer cool, it has fallen out of favor
+     *  - It makes the code harder to unit test.
+     *  - hence the spring.io team no longer recommends this type of injection, however it is still used in legacy projects
+     * @return
+     *
+     * Field injection is accomplished by injecting the dependency by setting field values on the class directly (as shown below)
+     *  - even 'private' fields and this is accomplished by java reflection, no need for constructors or setter methods.
+     */
+    @Autowired
     private Coach myCoach;
 
+//    //define a private field for the dependency
+//    private Coach myCoach;
+//
 //    /**
 //     * define the constructor for dependency injection (constructor injection)
 //     * - @Autowired annotation is optional when we have 1 constructor
@@ -23,19 +35,6 @@ public class DemoController {
 //    public DemoController(Coach myCoach) {
 //        this.myCoach = myCoach;
 //    }
-
-
-    /**
-     * Setter injection
-     * @param theCoach
-     *
-     * -any method name can be used here, as long as well have @Autowired annotation, spring will know this is
-     *  a dependency injection
-     */
-    @Autowired
-    public void setCoach(Coach theCoach){
-        myCoach = theCoach;
-    }
 
     //daily workout endpoint
     @GetMapping("/dailyworkout")
