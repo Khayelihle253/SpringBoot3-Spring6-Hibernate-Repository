@@ -10,9 +10,15 @@ import org.springframework.stereotype.Component;
  *  using @Primary can lead to some error when having multiple classes marked a primary, so it's better to stick with using @Qualifier
  *
  */
-@Primary
+//@Primary
 @Component
 public class BaseBallCoach implements Coach{
+
+    public BaseBallCoach() {
+        System.out.println("BaseBallCoach.BaseBallCoach constructor - "+getClass().getSimpleName());
+    }
+
+
     @Override
     public String getDailyWorkout() {
         return "Played  baseball for 2 hours";
