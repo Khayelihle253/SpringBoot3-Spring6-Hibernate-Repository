@@ -3,7 +3,19 @@ package com.khayelihle.springboot3_spring6_hibernate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+/**
+ * The default @SpringBootApplication enables:
+ *  - Auto configuration (@EnableAutoConfiguration): enables spring boot's autoconfiguration support
+ *  - Component scanning (@ComponentScan): enables component scanning of current package, and recursively scans the sub-packages
+ *  - Additional configuration (@Configuration): able to register extra beans with @Bean or import other configuration classes
+ *
+ *  behind the scenes this class:
+ *  - creates the application context, and registers the beans, and starts the embedded server
+ */
+
+//@SpringBootApplication
+//for scanning packages including those out of the spring boot application package, you have to explicitly specify which packages to scan:
+@SpringBootApplication(scanBasePackages={"com.khayelihle.springboot3_spring6_hibernate","com.khayelihle.util"})
 public class Springboot3Spring6HibernateApplication {
 
 	public static void main(String[] args) {

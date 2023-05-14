@@ -1,5 +1,6 @@
-package com.khayelihle.springboot3_spring6_hibernate.section2_ioc_and_di;
+package com.khayelihle.springboot3_spring6_hibernate.section2_ioc_and_di.rest;
 
+import com.khayelihle.util.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ public class DemoController {
      * define the constructor for dependency injection (constructor injection)
      * - @Autowired annotation is optional when we have 1 constructor
      *
-     * On object costruction:
+     * On object construction:
      *  - Coach theCoach = new CricketCoach();
      *  - DemoController demoController = new DemoController(theCoach);
      */
