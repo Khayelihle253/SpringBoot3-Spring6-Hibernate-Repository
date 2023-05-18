@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
- * @Repository annotation will give us support for commponent scanning and
+ * @Repository annotation will give us support for component scanning and
  * translates JDBC exceptions.
  */
 @Repository
@@ -31,5 +31,15 @@ public class StudentDAOImpl implements StudentDAO{
     @Transactional
     public void save(Student theStudent) {
         entityManager.persist(theStudent);
+    }
+
+    /**
+     * No need to use @Transactional here because we are querying data, not doing any modifications to the database
+     * @param id
+     * @return
+     */
+    @Override
+    public Student findById(Integer id) {
+        return entityManager.find(Student.class, id);
     }
 }

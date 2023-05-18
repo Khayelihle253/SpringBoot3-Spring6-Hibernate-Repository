@@ -35,8 +35,21 @@ public class Springboot3Spring6HibernateApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner ->{
-			createStudents(studentDAO);
+			//createStudents(studentDAO);
+			readStudent(studentDAO);
 		}; //java lambda expression
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		//create student object
+		Student tempStudent = new Student("Khayelihle1","Ngcobo1","khayelihle1@gmail.com");
+
+		//save the student object
+		System.out.println("Saving the student...");
+		studentDAO.save(tempStudent);
+
+		//retrieve the saved student object by id
+		System.out.println(studentDAO.findById(tempStudent.getId()));
 	}
 
 	private void createStudents(StudentDAO studentDAO) {

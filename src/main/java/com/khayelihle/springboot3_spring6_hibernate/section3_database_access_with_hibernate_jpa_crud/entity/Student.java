@@ -28,8 +28,12 @@ public class Student {
         this.email = email;
     }
 
-    //define getters/setters
+    //Default constructor, is required for data retrieval from the database
 
+    public Student() {
+    }
+
+    //define getters/setters
     public int getId() {
         return id;
     }
