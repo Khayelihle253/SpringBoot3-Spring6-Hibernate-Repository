@@ -1,5 +1,7 @@
 package com.khayelihle.springboot3_spring6_hibernate;
 
+import com.khayelihle.springboot3_spring6_hibernate.section3_database_access_with_hibernate_jpa_crud.dao.StudentDAO;
+import com.khayelihle.springboot3_spring6_hibernate.section3_database_access_with_hibernate_jpa_crud.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,12 +29,32 @@ public class Springboot3Spring6HibernateApplication {
 	/**
 	 * creating a command-line application
 	 *  - this method will be executed after the spring beans have been loaded
-	 * @param args
+	 * @param studentDAO
 	 * @return
 	 */
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args){
-		return runner ->{ System.out.println("Hello World"); }; //java lambda expression
+	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
+		return runner ->{
+			createStudents(studentDAO);
+		}; //java lambda expression
+	}
+
+	private void createStudents(StudentDAO studentDAO) {
+
+		//creating student objects
+		System.out.println("Creating new student object...");
+		Student tempStudent1 = new Student("Khayelihle1","Ngcobo1","khayelihle1@gmail.com");
+		Student tempStudent2 = new Student("Khayelihle2","Ngcobo2","khayelihle2@gmail.com");
+
+		//save the student objects and display the id of the saved student
+		System.out.println("Saving the student...");
+		studentDAO.save(tempStudent1);
+		System.out.println("Saved student. Generated id: " + tempStudent1.getId());
+
+		System.out.println("Saving the student...");
+		studentDAO.save(tempStudent2);
+		System.out.println("Saved student. Generated id: " + tempStudent2.getId());
+
 	}
 
 }
