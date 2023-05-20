@@ -42,8 +42,20 @@ public class Springboot3Spring6HibernateApplication {
 			//readStudents(studentDAO);
 			//readStudentsByLastName(studentDAO);\
 			//updateStudent(studentDAO);
-			deleteStudent(studentDAO);
+			//deleteStudent(studentDAO);
+			deleteStudentAll(studentDAO);
 		}; //java lambda expression
+	}
+
+	private void deleteStudentAll(StudentDAO studentDAO) {
+		//display all students before deletion
+		System.out.println("All students before deletion: " + studentDAO.findAll());
+
+		//delete all students from the database
+		studentDAO.deleteAll();
+
+		//display all students after deletion
+		System.out.println("All students after deletion: " + studentDAO.findAll());
 	}
 
 	private void deleteStudent(StudentDAO studentDAO) {
