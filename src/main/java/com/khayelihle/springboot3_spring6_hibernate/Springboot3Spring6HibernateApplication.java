@@ -39,8 +39,19 @@ public class Springboot3Spring6HibernateApplication {
 		return runner ->{
 			//createStudents(studentDAO);
 			//readStudent(studentDAO);
-			readStudents(studentDAO);
+			//readStudents(studentDAO);
+			readStudentsByLastName(studentDAO);
 		}; //java lambda expression
+	}
+
+	private void readStudentsByLastName(StudentDAO studentDAO) {
+		//get the list of students
+		List<Student> students = studentDAO.findByLastName("Ngcobo");
+
+		//loop through the list and display all students with lastname
+		for (Student student: students) {
+			System.out.println(student);
+		}
 	}
 
 	private void readStudents(StudentDAO studentDAO) {
