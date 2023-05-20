@@ -37,13 +37,13 @@ public class Springboot3Spring6HibernateApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner ->{
-			//createStudents(studentDAO);
+			createStudents(studentDAO);
 			//readStudent(studentDAO);
 			//readStudents(studentDAO);
 			//readStudentsByLastName(studentDAO);\
 			//updateStudent(studentDAO);
 			//deleteStudent(studentDAO);
-			deleteStudentAll(studentDAO);
+			//deleteStudentAll(studentDAO);
 		}; //java lambda expression
 	}
 
