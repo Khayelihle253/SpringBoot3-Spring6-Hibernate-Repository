@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 /**
  * The default @SpringBootApplication enables:
  *  - Auto configuration (@EnableAutoConfiguration): enables spring boot's autoconfiguration support
@@ -36,8 +38,19 @@ public class Springboot3Spring6HibernateApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner ->{
 			//createStudents(studentDAO);
-			readStudent(studentDAO);
+			//readStudent(studentDAO);
+			readStudents(studentDAO);
 		}; //java lambda expression
+	}
+
+	private void readStudents(StudentDAO studentDAO) {
+		//get the list of students
+		List<Student> students = studentDAO.findAll();
+
+		//loop through the list and display all students
+		for (Student student: students) {
+			System.out.println(student);
+		}
 	}
 
 	private void readStudent(StudentDAO studentDAO) {
@@ -50,6 +63,7 @@ public class Springboot3Spring6HibernateApplication {
 
 		//retrieve the saved student object by id
 		System.out.println(studentDAO.findById(tempStudent.getId()));
+
 	}
 
 	private void createStudents(StudentDAO studentDAO) {
