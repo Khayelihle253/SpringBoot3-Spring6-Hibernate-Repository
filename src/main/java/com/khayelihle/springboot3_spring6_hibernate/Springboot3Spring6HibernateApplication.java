@@ -40,8 +40,25 @@ public class Springboot3Spring6HibernateApplication {
 			//createStudents(studentDAO);
 			//readStudent(studentDAO);
 			//readStudents(studentDAO);
-			readStudentsByLastName(studentDAO);
+			//readStudentsByLastName(studentDAO);\
+			updateStudent(studentDAO);
 		}; //java lambda expression
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		//retrieve student by id; primary key
+		Student student = studentDAO.findById(1);
+		System.out.println("Student: " + student);
+
+		//change first name to "Khaye"
+		student.setFirstName("Khaye");
+
+		//update the student
+		studentDAO.update(student);
+
+		//display the updated student
+		Student updatedStudent = studentDAO.findById(1);
+		System.out.println("Updated student: " + updatedStudent);
 	}
 
 	private void readStudentsByLastName(StudentDAO studentDAO) {
