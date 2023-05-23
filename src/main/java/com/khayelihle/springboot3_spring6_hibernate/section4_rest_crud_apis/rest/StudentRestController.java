@@ -1,11 +1,11 @@
 package com.khayelihle.springboot3_spring6_hibernate.section4_rest_crud_apis.rest;
 
 import com.khayelihle.springboot3_spring6_hibernate.section4_rest_crud_apis.entity.Student;
+import com.khayelihle.springboot3_spring6_hibernate.section4_rest_crud_apis.entity.StudentErrorResponse;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,5 +41,22 @@ public class StudentRestController {
 
     }
 
+    /**
+     * Add the exception handler using @ExceptionHandler spring annotation
+     * - This will be returned to the rest client, whenever the StudentNotFoundException is thrown
+     * - JSON response as other responses handled by Jackson
+     */
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc){
+
+        //create a StudentErrorResponse
+        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
+        studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
+        studentErrorResponse.setMessage(exc.getMessage());
+        studentErrorResponse.setTimestamp(System.currentTimeMillis());
+
+        //return ResponseEntity
+        return new ResponseEntity<>(studentErrorResponse, HttpStatus.NOT_FOUND);
+    }
 
 }
