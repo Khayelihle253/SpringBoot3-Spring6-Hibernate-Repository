@@ -40,37 +40,4 @@ public class StudentRestController {
         return theStudents.get(studentIndex);
 
     }
-
-    /**
-     * Add the exception handler using @ExceptionHandler spring annotation
-     * - This will be returned to the rest client, whenever the StudentNotFoundException is thrown
-     * - JSON response as other responses handled by Jackson
-     */
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exception){
-
-        //create a StudentErrorResponse
-        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-        studentErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        studentErrorResponse.setMessage(exception.getMessage());
-        studentErrorResponse.setTimestamp(System.currentTimeMillis());
-
-        //return ResponseEntity
-        return new ResponseEntity<>(studentErrorResponse, HttpStatus.NOT_FOUND);
-    }
-
-    //handle any exception that is can be thrown (generic handler)
-
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(Exception exception){
-
-        //create a StudentErrorResponse
-        StudentErrorResponse studentErrorResponse = new StudentErrorResponse();
-        studentErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
-        studentErrorResponse.setMessage(exception.getMessage());
-        studentErrorResponse.setTimestamp(System.currentTimeMillis());
-
-        //return ResponseEntity
-        return new ResponseEntity<>(studentErrorResponse, HttpStatus.BAD_REQUEST);
-    }
 }
