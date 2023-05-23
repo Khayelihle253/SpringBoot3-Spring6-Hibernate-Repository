@@ -34,6 +34,9 @@ public class StudentRestController {
     @GetMapping("/students/{studentIndex}")
     public Student getStudents(@PathVariable int studentIndex){
 
+        if (studentIndex<0 || studentIndex>theStudents.size()-1){
+            throw new StudentNotFoundException("Could not find a student with index: " + studentIndex);
+        }
         return theStudents.get(studentIndex);
 
     }
