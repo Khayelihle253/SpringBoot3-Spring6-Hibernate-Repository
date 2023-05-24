@@ -32,12 +32,11 @@ public class StudentRestController {
 
     //define endpoint for "/students/{studentIndex}"
     @GetMapping("/students/{studentIndex}")
-    public Student getStudents(@PathVariable int studentIndex){
+    public ResponseEntity<Student> getStudents(@PathVariable int studentIndex){
 
         if (studentIndex<0 || studentIndex>theStudents.size()-1){
             throw new StudentNotFoundException("Could not find a student with index: " + studentIndex);
         }
-        return theStudents.get(studentIndex);
-
+        return new ResponseEntity<>(theStudents.get(studentIndex),HttpStatus.OK);
     }
 }
