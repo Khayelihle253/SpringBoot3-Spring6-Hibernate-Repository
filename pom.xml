@@ -58,7 +58,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
 
-		<!--Spring Data JPA, spring boot data jpa starter-->
+		<!--Spring Data JPA, spring boot data jpa starter for ORM support-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -68,6 +68,7 @@
 
 	<build>
 		<plugins>
+			<!--For packaging the spring boot application and running it-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
