@@ -1,6 +1,6 @@
 package com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.rest;
 
-import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.entity.Employee;
+import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.entity.Employee1;
 import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class EmployeeRestController {
+@RequestMapping("/api1")
+public class EmployeeRestController1 {
 
     private EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRestController(EmployeeService theEmployeeService) {
+    public EmployeeRestController1(EmployeeService theEmployeeService) {
         employeeService = theEmployeeService;
     }
 
     // expose "/employees" and return a list of employees
     @GetMapping("/employees")
-    public List<Employee> findAll() {
+    public List<Employee1> findAll() {
         return employeeService.findAll();
     }
 
     // add mapping for GET /employees/{employeeId}
 
     @GetMapping("/employees/{employeeId}")
-    public Employee getEmployee(@PathVariable int employeeId) {
+    public Employee1 getEmployee(@PathVariable int employeeId) {
 
-        Employee theEmployee = employeeService.findById(employeeId);
+        Employee1 theEmployee = employeeService.findById(employeeId);
 
         if (theEmployee == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
@@ -41,14 +41,14 @@ public class EmployeeRestController {
     // add mapping for POST /employees - add new employee
 
     @PostMapping("/employees")
-    public Employee addEmployee(@RequestBody Employee theEmployee) {
+    public Employee1 addEmployee(@RequestBody Employee1 theEmployee) {
 
         // also just in case they pass an id in JSON ... set id to 0
         // this is to force a save of new item ... instead of update
 
         theEmployee.setId(0);
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Employee1 dbEmployee = employeeService.save(theEmployee);
 
         return dbEmployee;
     }
@@ -56,9 +56,9 @@ public class EmployeeRestController {
     // add mapping for PUT /employees - update existing employee
 
     @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee theEmployee) {
+    public Employee1 updateEmployee(@RequestBody Employee1 theEmployee) {
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Employee1 dbEmployee = employeeService.save(theEmployee);
 
         return dbEmployee;
     }
@@ -68,7 +68,7 @@ public class EmployeeRestController {
     @DeleteMapping("/employees/{employeeId}")
     public String deleteEmployee(@PathVariable int employeeId) {
 
-        Employee tempEmployee = employeeService.findById(employeeId);
+        Employee1 tempEmployee = employeeService.findById(employeeId);
 
         // throw exception if null
 

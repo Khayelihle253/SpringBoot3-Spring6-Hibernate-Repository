@@ -1,7 +1,7 @@
 package com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.service;
 
 import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.dao.EmployeeRepository;
-import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.entity.Employee;
+import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.entity.Employee1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,25 +9,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl1 implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository) {
+    public EmployeeServiceImpl1(EmployeeRepository theEmployeeRepository) {
         employeeRepository = theEmployeeRepository;
     }
 
     @Override
-    public List<Employee> findAll() {
+    public List<Employee1> findAll() {
         return employeeRepository.findAll();
     }
 
     @Override
-    public Employee findById(int theId) {
-        Optional<Employee> result = employeeRepository.findById(theId);
+    public Employee1 findById(int theId) {
+        Optional<Employee1> result = employeeRepository.findById(theId);
 
-        Employee theEmployee = null;
+        Employee1 theEmployee = null;
 
         if (result.isPresent()) {
             theEmployee = result.get();
@@ -41,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee save(Employee theEmployee) {
+    public Employee1 save(Employee1 theEmployee) {
         return employeeRepository.save(theEmployee);
     }
 
