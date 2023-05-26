@@ -47,10 +47,10 @@
 		</dependency>
 
 		<!--Using spring security to secure actuator endpoints-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-security</artifactId>-->
+<!--		</dependency>-->
 
 		<!--MySQL Driver, mysql connector-->
 		<dependency>
