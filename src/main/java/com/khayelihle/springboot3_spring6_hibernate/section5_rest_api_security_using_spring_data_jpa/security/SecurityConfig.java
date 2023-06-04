@@ -21,7 +21,19 @@ public class SecurityConfig {
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){ //inject data source, auto-configured by spring boot
 
-        return new JdbcUserDetailsManager(dataSource); //this tells spring security to use JDBC authentication with the specified data source
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);//this tells spring security to use JDBC authentication with the specified data source
+
+        //define query to retrieve the `user` by username
+        jdbcUserDetailsManager.setUsersByUsernameQuery(
+                "select user_id, pw, active from members where user_id=?"
+        );
+
+        //define query to retrieve the `authorities/roles` by username
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+                "select user_id, role from roles where user_id=?"
+        );
+
+        return jdbcUserDetailsManager;
     }
 
 
