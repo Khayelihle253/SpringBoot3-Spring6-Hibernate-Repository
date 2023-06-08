@@ -1,7 +1,7 @@
 package com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.rest;
 
 import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.entity.Employee1;
-import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.service.EmployeeService;
+import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.service.EmployeeService1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 @RequestMapping("/api1")
 public class EmployeeRestController1 {
 
-    private EmployeeService employeeService;
+    private EmployeeService1 employeeService;
 
     @Autowired
-    public EmployeeRestController1(EmployeeService theEmployeeService) {
+    public EmployeeRestController1(EmployeeService1 theEmployeeService) {
         employeeService = theEmployeeService;
     }
 

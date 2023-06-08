@@ -3,7 +3,7 @@ package com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_
 import com.khayelihle.springboot3_spring6_hibernate.section5_rest_api_security_using_spring_data_jpa.entity.Employee1;
 import java.util.List;
 
-public interface EmployeeService {
+public interface EmployeeService1 {
 
     List<Employee1> findAll();
 
