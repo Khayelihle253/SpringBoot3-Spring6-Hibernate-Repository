@@ -54,6 +54,7 @@ public class SecurityConfig {
                                 .requestMatchers("/employees/list").hasRole("ADMIN")
                                 .requestMatchers("/employees/showFormForAdd").hasRole(employee)
                                 .requestMatchers("/employees/save").hasRole(employee)
+                                .requestMatchers("/employees/showFormForUpdate").hasRole(employee)
         );
 
         // use HTTP Basic authentication
