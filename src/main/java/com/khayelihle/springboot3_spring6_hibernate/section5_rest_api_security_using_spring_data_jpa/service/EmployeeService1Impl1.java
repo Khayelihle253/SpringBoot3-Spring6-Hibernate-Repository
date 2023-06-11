@@ -20,7 +20,8 @@ public class EmployeeService1Impl1 implements EmployeeService1 {
 
     @Override
     public List<Employee1> findAll() {
-        return employeeRepository.findAll();
+        //return employeeRepository.findAll();
+        return employeeRepository.findAllByOrderByLastNameAsc();
     }
 
     @Override
