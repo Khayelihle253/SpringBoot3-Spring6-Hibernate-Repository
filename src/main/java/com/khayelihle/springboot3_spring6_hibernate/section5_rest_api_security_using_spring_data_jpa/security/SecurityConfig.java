@@ -39,7 +39,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-
+        String employee = "EMPLOYEE";
+        String manager = "MANAGER";
+        String admin = "ADMIN";
         http.authorizeHttpRequests(configure ->
                         configure
                                 .requestMatchers(HttpMethod.GET, "/api1/employees").hasRole("EMPLOYEE")
@@ -49,7 +51,9 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.DELETE, "/api1/employees/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.GET,"/hello").hasRole("ADMIN") //for section 6
                                 .requestMatchers(HttpMethod.GET, "/employees/list").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.GET, "/employees/list").hasRole("ADMIN")
+                                .requestMatchers("/employees/list").hasRole("ADMIN")
+                                .requestMatchers("/employees/showFormForAdd").hasRole(employee)
+                                .requestMatchers("/employees/save").hasRole(employee)
         );
 
         // use HTTP Basic authentication
