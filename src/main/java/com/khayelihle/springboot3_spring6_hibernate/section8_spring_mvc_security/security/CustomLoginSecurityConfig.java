@@ -38,8 +38,8 @@ public class CustomLoginSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
-        http.authorizeHttpRequests(configurer->
-                configurer
+        http.authorizeHttpRequests(configure->
+                configure
                         .anyRequest().authenticated()
         ).formLogin(form->
                 form
