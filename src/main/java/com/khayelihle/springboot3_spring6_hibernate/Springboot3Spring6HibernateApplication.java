@@ -2,6 +2,9 @@ package com.khayelihle.springboot3_spring6_hibernate;
 
 import com.khayelihle.springboot3_spring6_hibernate.section3_database_access_with_hibernate_jpa_crud.dao.StudentDAO;
 import com.khayelihle.springboot3_spring6_hibernate.section3_database_access_with_hibernate_jpa_crud.entity.Student;
+import com.khayelihle.springboot3_spring6_hibernate.section9_jpa_hibernate_advanced_mappings.dao.AppDAO;
+import com.khayelihle.springboot3_spring6_hibernate.section9_jpa_hibernate_advanced_mappings.entity.Instructor;
+import com.khayelihle.springboot3_spring6_hibernate.section9_jpa_hibernate_advanced_mappings.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,11 +34,11 @@ public class Springboot3Spring6HibernateApplication {
 	/**
 	 * creating a command-line application
 	 *  - this method will be executed after the spring beans have been loaded
-	 * @param studentDAO
+	 //* @param studentDAO
 	 * @return
 	 */
 	@Bean
-	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
+	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner ->{
 			//createStudents(studentDAO);
 			//readStudent(studentDAO);
@@ -44,7 +47,28 @@ public class Springboot3Spring6HibernateApplication {
 			//updateStudent(studentDAO);
 			//deleteStudent(studentDAO);
 			//deleteStudentAll(studentDAO);
+
+			//section 9
+			createInstructor(appDAO);
+
 		}; //java lambda expression
+	}
+
+	private void createInstructor(AppDAO appDAO) {
+		//create instructor
+		Instructor instructor = new Instructor("Khaye","Ngcobo","khaye@gmail.com");
+
+		//create instructor details
+		InstructorDetail instructorDetail = new InstructorDetail("https://www.khaye.com/youtube","Coding");
+
+		//associate the objects
+		instructor.setInstructorDetail(instructorDetail);
+
+		//save the instructor, this will also save the details object because of CascadeType.ALL
+		System.out.println("Saving the instructor" + instructor);
+		appDAO.save(instructor);
+		System.out.println("Done!");
+
 	}
 
 	private void deleteStudentAll(StudentDAO studentDAO) {

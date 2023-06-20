@@ -12,13 +12,13 @@ public class Instructor {
     private int id;
 
     @Column(name = "first_name")
-    private int firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    private int lastName;
+    private String lastName;
 
     @Column(name = "email")
-    private int email;
+    private String email;
 
     //set up mapping to InstructorDetail entity
     @OneToOne(cascade = CascadeType.ALL)
@@ -28,7 +28,7 @@ public class Instructor {
     public Instructor() {
     }
 
-    public Instructor(int firstName, int lastName, int email) {
+    public Instructor(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -42,37 +42,46 @@ public class Instructor {
         this.id = id;
     }
 
-    public int getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(int firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public int getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(int lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public int getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(int email) {
+    public void setEmail(String email) {
         this.email = email;
+    }
+
+    public InstructorDetail getInstructorDetail() {
+        return instructorDetail;
+    }
+
+    public void setInstructorDetail(InstructorDetail instructorDetail) {
+        this.instructorDetail = instructorDetail;
     }
 
     @Override
     public String toString() {
         return "Instructor{" +
                 "id=" + id +
-                ", firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", email=" + email +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", instructorDetail=" + instructorDetail +
                 '}';
     }
 }
