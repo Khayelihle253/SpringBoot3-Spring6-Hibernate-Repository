@@ -20,6 +20,11 @@ public class Instructor {
     @Column(name = "email")
     private int email;
 
+    //set up mapping to InstructorDetail entity
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "instructor_detail_id")
+    private InstructorDetail instructorDetail;
+
     public Instructor() {
     }
 
