@@ -1,6 +1,7 @@
 package com.khayelihle.springboot3_spring6_hibernate.section9_jpa_hibernate_advanced_mappings.dao;
 
 import com.khayelihle.springboot3_spring6_hibernate.section9_jpa_hibernate_advanced_mappings.entity.Instructor;
+import com.khayelihle.springboot3_spring6_hibernate.section9_jpa_hibernate_advanced_mappings.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,10 @@ public class AppDAOImpl implements AppDAO {
         }
         entityManager.remove(instructor);
         return "Successfully deleted the record with id " + id;
+    }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(int id) {
+        return entityManager.find(InstructorDetail.class, id);
     }
 }
