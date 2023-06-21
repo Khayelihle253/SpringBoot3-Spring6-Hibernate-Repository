@@ -21,4 +21,15 @@ public class AppDAOImpl implements AppDAO {
     public void save(Instructor instructor) {
         entityManager.persist(instructor);
     }
+
+    @Override
+    public Instructor findById(int id) {
+
+        Instructor instructor = entityManager.find(Instructor.class,id);
+        if (instructor == null){
+            throw new RuntimeException("Couldn't find the a record with id: " + id);
+        }
+
+        return instructor;
+    }
 }

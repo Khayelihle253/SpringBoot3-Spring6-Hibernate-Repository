@@ -6,4 +6,6 @@ import jakarta.persistence.EntityManager;
 public interface AppDAO {
 
     void save(Instructor instructor);
+
+    Instructor findById(int id);
 }

@@ -49,9 +49,17 @@ public class Springboot3Spring6HibernateApplication {
 			//deleteStudentAll(studentDAO);
 
 			//section 9
-			createInstructor(appDAO);
+			//createInstructor(appDAO);
+			findInstructorById(appDAO);
 
 		}; //java lambda expression
+	}
+
+	private void findInstructorById(AppDAO appDAO) {
+		int requiredInstructorId = 1;
+
+		System.out.println("Requested employee: ");
+		System.out.println(appDAO.findById(requiredInstructorId));
 	}
 
 	private void createInstructor(AppDAO appDAO) {
