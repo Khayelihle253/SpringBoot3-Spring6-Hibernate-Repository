@@ -32,4 +32,16 @@ public class AppDAOImpl implements AppDAO {
 
         return instructor;
     }
+
+    @Override
+    @Transactional
+    public String delete(int id) {
+
+        Instructor instructor = this.findById(id);
+        if (instructor == null){
+            return "Couldn't perform the delete because id: " + id + " doesn't exist";
+        }
+        entityManager.remove(instructor);
+        return "Successfully deleted the record with id " + id;
+    }
 }

@@ -50,9 +50,15 @@ public class Springboot3Spring6HibernateApplication {
 
 			//section 9
 			//createInstructor(appDAO);
-			findInstructorById(appDAO);
+			//findInstructorById(appDAO);
+			deleteInstructor(appDAO);
 
 		}; //java lambda expression
+	}
+
+	private void deleteInstructor(AppDAO appDAO){
+		int id = 1;
+		System.out.println(appDAO.delete(id));
 	}
 
 	private void findInstructorById(AppDAO appDAO) {
